@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private String createOrderSummary(int price){
         String priceMessage = "Name: Deepti Kumar" ;
-        priceMessage += "\nQuantity: " + quantity ;
+        priceMessage += ("\nQuantity: " + quantity);
         priceMessage+= "\nTotal: $" + price + "\nThank you!";
         displayMessage(priceMessage);
         return priceMessage;
@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+       orderSummaryTextView.setText(message);
     }
 
     /**
