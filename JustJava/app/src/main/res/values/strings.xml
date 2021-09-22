@@ -7,4 +7,6 @@
     <string name="add">+</string>
     <string name="_0">0</string>
     <string name="_10">$10</string>
+
+    <string name="ordersummary">Order Summary</string>
 </resources>

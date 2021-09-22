@@ -2,6 +2,7 @@ package com.example.justjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -20,16 +21,26 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = quantity * 5;
-        String priceMessage = "Total: $" + price + "\nThank you!";
+        int price = calculatePrice(quantity);
+        displayMessage(createOrderSummary(price));
+    }
+    private String createOrderSummary(int price){
+        String priceMessage = "Name: Deepti Kumar" ;
+        priceMessage += "\nQuantity: " + quantity ;
+        priceMessage+= "\nTotal: $" + price + "\nThank you!";
         displayMessage(priceMessage);
+        return priceMessage;
+    }
+
+    private int calculatePrice(int quantity){
+        return quantity*5;
     }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        TextView priceTextView = (TextView) findViewById(R.id.order_summary_text_view);
         priceTextView.setText(message);
     }
 
@@ -54,19 +65,13 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
+    @SuppressLint("SetTextI18n")
     private void display(int number) {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
 
 
 }
