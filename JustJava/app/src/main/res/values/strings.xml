@@ -9,4 +9,10 @@
     <string name="_10">$10</string>
 
     <string name="ordersummary">Order Summary</string>
+    <string name="toppings">Toppings</string>
+    <string name="whipped_cream">Whipped Cream</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="your_name">Your name</string>
+    <string name="_2">2</string>
+
 </resources>

@@ -3,14 +3,19 @@ package com.example.justjava;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
+    int quantity = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,27 +26,51 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = calculatePrice(quantity);
-        displayMessage(createOrderSummary(price));
+        CheckBox whippedCreamCheck = (CheckBox) findViewById(R.id.whippedcream) ;
+        boolean hasWhippedCream = whippedCreamCheck.isChecked();
+        CheckBox chocolateCheck = (CheckBox) findViewById(R.id.chocolate) ;
+        boolean hasChocolate =chocolateCheck.isChecked();
+
+        int price = calculatePrice(quantity,hasWhippedCream,hasChocolate);
+
+        EditText nameView = (EditText)findViewById(R.id.name) ;
+        String name = nameView.getText().toString() ;
+        displayMessage(createOrderSummary(price,hasWhippedCream,hasChocolate, name));
     }
-    private String createOrderSummary(int price){
-        String priceMessage = "Name: Deepti Kumar" ;
+    private String createOrderSummary(int price, boolean hasWhippedCream , boolean hasChocolate,String name){
+        String priceMessage = "Name: " + name ;
+
+        priceMessage+= "\nAdded whipped cream?: " + hasWhippedCream;
+        priceMessage+= "\nAdded chocolate?: " + hasChocolate;
         priceMessage += ("\nQuantity: " + quantity);
         priceMessage+= "\nTotal: $" + price + "\nThank you!";
         displayMessage(priceMessage);
         return priceMessage;
     }
 
-    private int calculatePrice(int quantity){
-        return quantity*5;
+    private int calculatePrice(int quantity, boolean whippedCream, boolean chocolate){
+        int basePrice = 5;
+
+        if(whippedCream) basePrice += 1;
+        else if(chocolate)  basePrice += 2 ;
+        return basePrice*quantity;
     }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-       orderSummaryTextView.setText(message);
+
+       Intent intent = new Intent(Intent.ACTION_SEND  ) ;
+
+       intent.setData(Uri.parse("mailto:")) ;
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Your Coffee order from JustJava!");
+       intent.putExtra(Intent.EXTRA_TEXT,message) ;
+       Intent chooser= Intent.createChooser(intent,"Send mail") ;
+
+       startActivity(chooser);
+
+
     }
 
     /**
@@ -49,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void increment(View view) {
         quantity = quantity + 1;
+        if(quantity > 100)quantity = 100 ;
         display(quantity);
 
     }
@@ -58,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void decrement(View view) {
         quantity = quantity - 1;
+        if(quantity < 0)quantity = 0 ;
         display(quantity);
 
     }
