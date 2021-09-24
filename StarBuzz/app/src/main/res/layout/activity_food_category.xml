@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodCategoryActivity">
+    tools:context=".FoodCategoryActivity"
+    android:orientation="vertical">
+    <include
+        layout ="@layout/toolbar_main"
+        android:id ="@+id/appbarlayout"
+        />
     <ListView
         android:id="@+id/list_foods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/options"
         android:layout_margin="16dp"/>
-
 </LinearLayout>

@@ -1,6 +1,8 @@
 package com.example.starbuzz;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,11 @@ public class FoodCategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_category);
+        Toolbar toolbar = findViewById(R.id.mtoolbar) ;
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setDisplayHomeAsUpEnabled(true);
         ArrayAdapter<Food> listAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,

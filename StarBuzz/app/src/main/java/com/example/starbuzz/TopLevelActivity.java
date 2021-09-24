@@ -1,6 +1,7 @@
 package com.example.starbuzz;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ public class TopLevelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.mtoolbar) ;
+        setSupportActionBar(toolbar);
         AdapterView.OnItemClickListener itemClickListener = new AdapterView.OnItemClickListener(){
                     public void onItemClick(AdapterView<?> listView,
                                             View itemView,
@@ -31,7 +34,7 @@ public class TopLevelActivity extends AppCompatActivity {
                         }
                         else {
                             Intent intent = new Intent(TopLevelActivity.this,
-                                    StoresShowActivity.class);
+                                    StoresActivity.class);
                             startActivity(intent);
                         }
                     }
