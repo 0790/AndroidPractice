@@ -2,14 +2,18 @@ package com.example.starbuzz;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ShareActionProvider;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DrinkActivity extends AppCompatActivity {
-
+    ShareActionProvider shareActionProvider ;
     public static final String EXTRA_DRINKID = "drinkID";
 
     @Override
@@ -37,5 +41,14 @@ public class DrinkActivity extends AppCompatActivity {
         ImageView photo = (ImageView)findViewById(R.id.photo);
         photo.setImageResource(drink.getImageResourceId());
         photo.setContentDescription(drink.getName());
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+// Inflate the menu; this adds items to the app bar.
+        getMenuInflater().inflate(R.menu.fav_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

@@ -25,6 +25,7 @@ public class DrinkCategoryActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.mtoolbar) ;
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         ArrayAdapter<Drink> listAdapter = new ArrayAdapter<>(
                 this,
@@ -58,9 +59,9 @@ public class DrinkCategoryActivity extends AppCompatActivity {
 // Inflate the menu; this adds items to the app bar.
         getMenuInflater().inflate(R.menu.list_main, menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
-         shareActionProvider =
-                (ShareActionProvider)
-                        MenuItemCompat.getActionProvider(menuItem);
+        shareActionProvider =
+              (ShareActionProvider)
+                      MenuItemCompat.getActionProvider(menuItem);
         setShareActionIntent();
         return super.onCreateOptionsMenu(menu);
     }
@@ -79,9 +80,11 @@ public class DrinkCategoryActivity extends AppCompatActivity {
     }
     private void setShareActionIntent() {
         Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
+        intent.setType("text/plain") ;
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Are you hungry?");
         intent.putExtra(Intent.EXTRA_TEXT, "Are you hungry?");
         shareActionProvider.setShareIntent(intent);
     }
+
 
 }

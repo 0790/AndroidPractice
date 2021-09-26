@@ -14,6 +14,7 @@
         <activity
             android:name=".OrderActivity"
             android:exported="true"
+            android:label="Order"
             android:parentActivityName=".DrinkCategoryActivity"/>
 
         <meta-data
