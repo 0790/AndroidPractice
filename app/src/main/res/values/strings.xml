@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">NotesApp</string>
+    <string name="add_a_task">Add a Task</string>
+
+    <string name="save">Save</string>
+    <string name="update_task">Update Task</string>
+    <string name="task">task</string>
+    <string name="description">description</string>
+    <string name="time">time</string>
+    <string name="mark_as_finished">Mark as finished</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="completed">Completed</string>
+    <string name="spdp">SPDP</string>
+    <string name="quiz_3">Quiz 3</string>
+    <string name="_5pm_today">5pm today</string>
+</resources>
