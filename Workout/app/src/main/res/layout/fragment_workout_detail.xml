@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkoutDetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/workout_title"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="108dp"
+        android:id="@+id/textTitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/workout_description"
+        android:id="@+id/desc"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_margin="108dp"/>
+
+</FrameLayout>
